@@ -1,0 +1,69 @@
+# =========================
+# DATASET - DO NOT PUSH
+# =========================
+
+dataset/
+datasets/
+data/
+
+# Food image files
+*.jpg
+*.jpeg
+*.png
+*.webp
+
+# =========================
+# PYTHON
+# =========================
+
+venv/
+.venv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# =========================
+# JUPYTER
+# =========================
+
+.ipynb_checkpoints/
+
+# =========================
+# NODE / REACT
+# =========================
+
+node_modules/
+frontend/node_modules/
+frontend/dist/
+frontend/build/
+
+# =========================
+# TRAINING OUTPUTS
+# =========================
+
+runs/
+logs/
+wandb/
+
+# =========================
+# ENVIRONMENT / SECRETS
+# =========================
+
+.env
+.env.*
+!.env.example
+
+# =========================
+# IDE
+# =========================
+
+.vscode/
+.idea/
+
+# =========================
+# OS
+# =========================
+
+.DS_Store
+Thumbs.db
