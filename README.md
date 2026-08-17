@@ -25,6 +25,35 @@ The project combines a deep learning image classification model with a FastAPI b
 
 ---
 
+
+## 📸 Screenshots
+
+### 🏠 Home Page
+
+![NutritionAI Home Page](screenshots/home.png)
+
+### 🖼️ Food Image Upload
+
+![Food Image Upload](screenshots/upload-preview.png)
+
+### 🤖 Food Prediction
+
+![Food Prediction](screenshots/prediction.png)
+
+### 📊 Nutrition Analysis
+
+![Nutrition Analysis](screenshots/nutrition-analysis.png)
+
+### 💚 AI Nutrition Recommendation
+
+![AI Nutrition Recommendation](screenshots/ai-recommendation.png)
+
+### ⚠️ Unsupported Food
+
+![Unsupported Food Message](screenshots/unsupported_food.png)
+
+---
+
 ## 🍛 Supported Food Categories
 
 The current model supports **20 Indian food categories**:
