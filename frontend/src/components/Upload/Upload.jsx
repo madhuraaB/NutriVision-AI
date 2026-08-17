@@ -141,6 +141,12 @@ const Upload = () => {
                         <p className="text-gray-400 mt-2">
                             JPG • JPEG • PNG
                         </p>
+                        <p className="text-gray-500 text-sm mt-4 max-w-md text-center leading-relaxed">
+                            ⚠️ NutritionAI currently recognizes only the food categories
+                            included in its training dataset. It does not support all types
+                            of food, and predictions for unsupported or unclear images may
+                            be inaccurate.
+</p>
 
                         <span
                             className="
