@@ -6,12 +6,11 @@ dataset/
 datasets/
 data/
 
-# Food image files
-*.jpg
-*.jpeg
-*.png
-*.webp
-
+# Dataset image files
+dataset/**/*.jpg
+dataset/**/*.jpeg
+dataset/**/*.png
+dataset/**/*.webp
 # =========================
 # PYTHON
 # =========================
