@@ -47,7 +47,7 @@ const Upload = () => {
             formData.append("file", selectedFile);
 
             const response = await fetch(
-                "http://127.0.0.1:8000/predict",
+                "https://nutrivision-ai-backend-h4iq.onrender.com/predict",
                 {
                     method: "POST",
                     body: formData
