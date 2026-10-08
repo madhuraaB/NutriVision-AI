@@ -18,10 +18,10 @@ app = FastAPI(
 app.add_middleware(
     CORSMiddleware,
     allow_origins=[
-        "http://localhost:5173",
-        "http://127.0.0.1:5173",
-        "https://nutrivision-ai-k18lw931o-bhuvadmadhura982-4419s-projects.vercel.app"
-    ],
+    "http://localhost:5173",
+    "http://127.0.0.1:5173",
+    "https://nutrivision-ai-web.vercel.app"
+],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
