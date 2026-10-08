@@ -2,11 +2,17 @@
 
 ## AI-Powered Indian Food Recognition and Nutrition Analysis
 
-NutritionAI is an AI-powered web application that identifies Indian food from an uploaded image and provides nutritional information, a health score, and an AI-generated nutrition recommendation.
+NutritionAI is an AI-powered web application that identifies Indian food from an uploaded image and provides nutritional information, a health score, and an nutrition recommendation.
 
 The project combines a deep learning image classification model with a FastAPI backend and a React frontend to provide an end-to-end food analysis experience.
 
 ---
+## 🚀 Live Demo
+
+🌐 **Live Website:** https://nutrivision-ai-k18lw931o-bhuvadmadhura982-4419s-projects.vercel.app/
+
+---
+
 
 ## ✨ Features
 
