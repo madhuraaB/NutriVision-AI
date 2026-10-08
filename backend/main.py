@@ -17,7 +17,7 @@ app.add_middleware(
     allow_origins=[
         "http://localhost:5173",
         "http://127.0.0.1:5173",
-        "https://nutrivision-ai-web.vercel.app/"
+        "https://nutrivision-ai-web.vercel.app"
     ],
     allow_credentials=True,
     allow_methods=["*"],
