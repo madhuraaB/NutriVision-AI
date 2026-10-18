@@ -47,12 +47,12 @@ const Upload = () => {
             formData.append("file", selectedFile);
 
             const response = await fetch(
-                "https://nutrivision-ai-backend-h4iq.onrender.com/predict",
-                {
-                    method: "POST",
-                    body: formData
-                }
-            );
+    "http://127.0.0.1:8000/predict",
+    {
+        method: "POST",
+        body: formData
+    }
+);
 
             if (!response.ok) {
                 throw new Error("Prediction failed");

@@ -162,91 +162,153 @@ def get_nutrition(food_name):
 # RECOMMENDATIONS
 # ============================================================
 
-def generate_recommendation(food_name, nutrition):
-    """
-    Generate simple rule-based dietary recommendations.
-    """
 
+def generate_recommendation(food_name, nutrition):
     recommendations = []
 
     if nutrition is None:
         return recommendations
 
-    calories = float(nutrition.get("Calories_kcal", 0))
-    protein = float(nutrition.get("Protein_g", 0))
-    fiber = float(nutrition.get("Fiber_g", 0))
-    sugar = float(nutrition.get("Sugar_g", 0))
-    health_score = float(nutrition.get("Nutrition_Score", 0))
+    # Read nutrition values
+    calories = float(nutrition.get("Calories_kcal", 0) or 0)
+    protein = float(nutrition.get("Protein_g", 0) or 0)
+    fiber = float(nutrition.get("Fiber_g", 0) or 0)
+    sugar = float(nutrition.get("Sugar_g", 0) or 0)
+    fat = float(nutrition.get("Fat_g", 0) or 0)
+    sodium = float(nutrition.get("Sodium_mg", 0) or 0)
+    health_score = float(nutrition.get("Nutrition_Score", 0) or 0)
 
-    meal_type = str(
-        nutrition.get("Meal_Type", "")
-    )
+    meal_type = str(nutrition.get("Meal_Type", "") or "")
+    best_for = str(nutrition.get("Best_For", "") or "")
 
-    best_for = str(
-        nutrition.get("Best_For", "")
-    )
+    # Food-specific recommendations
+    food_advice = {
+        "Aloo_matar": [
+            "Pair with chapathi for a balanced lunch or dinner.",
+            "Its peas provide fiber and some plant-based protein."
+        ],
+        "Besan_cheela": [
+            "A protein-containing breakfast option made with gram flour.",
+            "Pair with curd or vegetables for a more varied meal."
+        ],
+        "Biryani": [
+            "Consider a moderate portion and pair with raita or vegetables.",
+            "The recipe and cooking method can significantly affect its nutrition."
+        ],
+        "Chapathi": [
+            "Pair with dal, chickpeas, or paneer to increase meal protein.",
+            "Add vegetables to make the meal more balanced."
+        ],
+        "Chole_bature": [
+            "Enjoy a smaller portion if you are limiting calories or fat.",
+            "Pair with a vegetable salad and choose less oily accompaniments."
+        ],
+        "Dahl": [
+            "A useful source of plant-based protein and fiber.",
+            "Pair with chapathi or rice and vegetables for a balanced meal."
+        ],
+        "Dhokla": [
+            "A steamed snack option that can fit into a balanced diet.",
+            "Pair with fruit or another protein-rich food if needed."
+        ],
+        "Dosa": [
+            "Pair with sambar for additional protein and fiber.",
+            "Consider the oil and chutney portions when planning your meal."
+        ],
+        "Gulab_jamun": [
+            "Enjoy occasionally in a small portion; this serving contains substantial sugar.",
+            "Balance sweet treats with nutrient-rich foods throughout the day."
+        ],
+        "Idli": [
+            "A steamed breakfast option that is relatively low in calories per listed serving.",
+            "Pair with sambar to add protein and fiber."
+        ],
+        "Jalebi": [
+            "Enjoy occasionally in a small portion because this serving is high in sugar.",
+            "Choose water or an unsweetened drink alongside it."
+        ],
+        "Kadai_paneer": [
+            "Paneer contributes protein to the meal.",
+            "Pair with vegetables and a moderate portion of chapathi or naan."
+        ],
+        "Naan": [
+            "Pair with dal, chickpeas, or paneer to add protein.",
+            "Consider the portion size, particularly when eating it with rich curries."
+        ],
+        "Paani_puri": [
+            "Enjoy in moderation; this serving contains 325 kcal according to the dataset.",
+            "For a more filling snack, consider adding sprouts or another protein-rich side."
+        ],
+        "Pakoda": [
+            "Enjoy in moderation because deep-frying contributes to its fat content.",
+            "Pair with a fresh vegetable side rather than making fried snacks the main meal."
+        ],
+        "Pav_bhaji": [
+            "The vegetable mixture provides fiber.",
+            "Consider the butter and bread portions if you are limiting added fat or calories."
+        ],
+        "Poha": [
+            "A convenient breakfast option that provides carbohydrates and some fiber.",
+            "Adding peas or serving it with curd can increase protein."
+        ],
+        "Rolls": [
+            "The filling affects the protein and overall nutritional value.",
+            "Choose a vegetable-rich filling and pair with a salad when available."
+        ],
+        "Samosa": [
+            "Enjoy occasionally or choose a smaller portion if you are limiting calories or fat.",
+            "Pair with a fresh vegetable side for a more balanced snack."
+        ],
+        "Vada_pav": [
+            "Enjoy in moderation as this serving contains 375 kcal according to the dataset.",
+            "Pair with fruit or vegetables and consider the added chutneys and fried portion."
+        ]
+    }
 
-    # Calories
-    if calories <= 250:
+    # Add food-specific advice
+    recommendations.extend(food_advice.get(food_name, []))
+
+    # Add recommendations based on the nutrition values
+    if calories >= 500:
         recommendations.append(
-            "Light meal with relatively low calories."
+            "This serving is relatively high in calories; consider portion size."
+        )
+    elif calories <= 200:
+        recommendations.append(
+            "This serving is relatively low in calories compared with many meals."
         )
 
-    elif calories >= 500:
-        recommendations.append(
-            "High-calorie food; consider a moderate portion."
-        )
-
-    else:
-        recommendations.append(
-            "Moderate-calorie food suitable as part of a balanced meal."
-        )
-
-    # Protein
     if protein < 8:
         recommendations.append(
-            "Pair with a protein-rich food such as curd, paneer, eggs, or dal."
+            "Consider adding a protein-rich food such as dal, curd, paneer, or eggs."
         )
 
-    else:
-        recommendations.append(
-            "Provides a useful amount of protein."
-        )
-
-    # Fiber
     if fiber < 3:
         recommendations.append(
-            "Consider pairing it with vegetables, salad, or another fiber-rich food."
+            "Add vegetables, fruit, or another fiber-rich food to your meal."
         )
 
-    # Sugar
     if sugar >= 20:
         recommendations.append(
-            "High in sugar; best consumed occasionally and in a small portion."
+            "This serving is high in sugar; consider a smaller portion."
         )
 
-    # Health score
+    if sodium >= 600:
+        recommendations.append(
+            "This serving contains relatively high sodium; consider lower-sodium accompaniments."
+        )
+
     if health_score >= 85:
         recommendations.append(
-            "Good nutritional profile for regular consumption."
+            "The dataset rates this food highly for nutrition."
         )
-
     elif health_score < 50:
         recommendations.append(
-            "Better consumed occasionally rather than as a regular food choice."
+            "The dataset gives this food a low nutrition score, so consider having it occasionally."
         )
 
-    # Meal type
     if meal_type:
-        recommendations.append(
-            f"Best consumed during {meal_type}."
-        )
-
-    # Best for
-    if best_for:
-        recommendations.append(
-            f"Suitable for: {best_for}."
-        )
+        recommendations.append(f"Meal suggestion: {meal_type}.")
 
     return recommendations
 
