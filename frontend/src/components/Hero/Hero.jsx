@@ -7,7 +7,7 @@ const Hero = () => {
 
                 <h1 className="text-6xl font-extrabold text-white mb-6">
                     Nutrition Analysis
-                    <span className="text-green-400"> using AI</span>
+                    <span className="text-green-400"></span>
                 </h1>
 
                 <p className="text-gray-400 text-xl mb-10">
