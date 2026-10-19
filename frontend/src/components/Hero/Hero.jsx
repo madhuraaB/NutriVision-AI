@@ -12,7 +12,7 @@ const Hero = () => {
 
                 <p className="text-gray-400 text-xl mb-10">
                     Upload an image of your Indian meal and instantly get
-                    nutrition facts, calories, health score and AI-powered
+                    nutrition facts, calories, health score and dietary
                     recommendations.
                 </p>
 

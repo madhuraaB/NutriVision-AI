@@ -70,7 +70,7 @@ const About = () => {
                     </h2>
 
                     <p className="text-gray-400 max-w-2xl mx-auto mt-4 leading-relaxed">
-                        NutriVision AI is an AI-powered Indian food recognition
+                        NutriVision AI is an Indian food recognition
                         and nutrition analysis platform. Upload a food image to
                         identify the dish, explore its nutritional information,
                         view a health score, and receive a simple nutrition insight.
